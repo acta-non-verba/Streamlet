@@ -6,10 +6,13 @@ namespace StreamletExperience
     public interface IStreamable
     {
         string Stream(string preferredContent);
-        string StreamTrailer(string preferredContent);
     }
 
-    public class StaticContentStreamer : IStreamable
+    public interface ITrailerStreamable
+    {
+        string StreamTrailer(string preferredContent);
+    }
+    public class StaticContentStreamer : IStreamable,ITrailerStreamable
     {
 
         public string Stream(string preferredContent)
@@ -23,7 +26,7 @@ namespace StreamletExperience
         }
     }
 
-    public class LiveStreamContentStreamer : IStreamable
+    public class LiveStreamContentStreamer : IStreamable,ITrailerStreamable
     {
         public string Stream(string preferredContent)
         {
@@ -35,14 +38,8 @@ namespace StreamletExperience
             return "Streaming live stream trailer- " + preferredContent;
         }
     }
-
-    public class UpcomingStaticContentStreamer : IStreamable
+    public class UpcomingStaticContentStreamer : ITrailerStreamable
     {
-        public string Stream(string preferredContent)
-        {
-            throw new NotImplementedException();
-        }
-
         public string StreamTrailer(string preferredContent)
         {
             return "Streaming upcoming web series trailer- " + preferredContent;

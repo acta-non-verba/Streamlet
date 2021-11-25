@@ -32,8 +32,8 @@ namespace StreamletExperience
                     userPreference = askUserPreference(upcomingWebSeriesContent);
                     string chosenUpcomingStaticContent = upCominglibrary.GetUpcomingStaticContentById(userPreference).Value;
 
-                    IStreamable staticUpcomingContentStreamer = new StaticContentStreamer();
-                    stream = staticUpcomingContentStreamer.StreamTrailer(chosenUpcomingStaticContent);
+                    ITrailerStreamable trailerStreamer = new StaticContentStreamer();
+                    stream = trailerStreamer.StreamTrailer(chosenUpcomingStaticContent);
                     Console.WriteLine(stream);
                     break;
                 case "L":
@@ -42,8 +42,8 @@ namespace StreamletExperience
                     userPreference = askUserPreference(liveStreamContent);
                     string chosenLiveStreamContent = liveStreamContentlibrary.GetLiveStreamContentById(userPreference).Value;
 
-                    IStreamable liveStreamContentStreamer = new LiveStreamContentStreamer();
-                    stream = liveStreamContentStreamer.Stream(chosenLiveStreamContent);
+                    IStreamable liveStreamer = new LiveStreamContentStreamer();
+                    stream = liveStreamer.Stream(chosenLiveStreamContent);
                     Console.WriteLine(stream);
                     break;
                 default:
