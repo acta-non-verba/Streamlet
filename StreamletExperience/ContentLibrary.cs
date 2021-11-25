@@ -16,13 +16,22 @@ namespace StreamletExperience
             list.Add(5, "Break Point");
             return list;
         }
-
-        public KeyValuePair<int,string> GetStaticContentById(int id)
+        public Dictionary<int, string> GetUpcomingStaticContentList()
         {
-            return GetLatestStaticContentList().FirstOrDefault(x=>x.Key==id);
+            Dictionary<int, string> list = new Dictionary<int, string>();
+            list.Add(1, "The Minimalists: Less Is Now");
+            list.Add(2, "Asphalt Burning");
+            list.Add(3, "Surviving Death");
+            list.Add(4, "Lupin");
+            list.Add(5, "Pretend It's A City");
+            return list;
+        }
+        public KeyValuePair<int, string> GetStaticContentById(int id)
+        {
+            return GetLatestStaticContentList().FirstOrDefault(x => x.Key == id);
         }
 
-         public Dictionary<int, string> GetUpcomingLiveStreamList()
+        public Dictionary<int, string> GetCurrentlyLiveStreamList()
         {
             Dictionary<int, string> list = new Dictionary<int, string>();
             list.Add(1, "Ghanti Bajao LIVE with Akhilesh Anand");
@@ -32,9 +41,15 @@ namespace StreamletExperience
             list.Add(5, "Mann ki baat - Narendra Modi");
             return list;
         }
-        public KeyValuePair<int,string> GetLiveStreamContentById(int id)
+
+        internal KeyValuePair<int, string>  GetUpcomingStaticContentById(int id)
         {
-            return GetUpcomingLiveStreamList().FirstOrDefault(x=>x.Key==id);
+            return GetUpcomingStaticContentList().FirstOrDefault(x => x.Key == id);
+        }
+
+        public KeyValuePair<int, string> GetLiveStreamContentById(int id)
+        {
+            return GetCurrentlyLiveStreamList().FirstOrDefault(x => x.Key == id);
         }
     }
 }
