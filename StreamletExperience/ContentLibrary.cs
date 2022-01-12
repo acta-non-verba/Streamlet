@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace StreamletExperience
 {
+    //dropped abstract concepts
     public class ContentLibrary
     {
         public Dictionary<int, string> GetLatestStaticContentList()
